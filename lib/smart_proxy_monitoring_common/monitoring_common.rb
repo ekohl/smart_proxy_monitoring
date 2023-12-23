@@ -27,5 +27,13 @@ module Proxy::Monitoring
     def set_downtime_host(host, author, comment, start_time, end_time, all_services: nil, **)
       raise NotImplementedError
     end
+
+    def handle_event(event)
+      raise NotImplementedError
+    end
+
+    def handle_history(history)
+      raise NotImplementedError
+    end
   end
 end

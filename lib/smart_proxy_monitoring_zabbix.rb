@@ -1,0 +1,1 @@
+require 'smart_proxy_monitoring_zabbix/provider'

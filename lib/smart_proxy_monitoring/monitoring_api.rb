@@ -21,7 +21,7 @@ module Proxy::Monitoring
       end
     end
 
-    put '/host/:host' do |host|
+    post '/host/:host' do |host|
       log_provider_errors do
         validate_dns_name!(host)
         host = strip_domain(host)
@@ -32,7 +32,7 @@ module Proxy::Monitoring
       end
     end
 
-    post '/host/:host' do |host|
+    put '/host/:host' do |host|
       log_provider_errors do
         validate_dns_name!(host)
         host = strip_domain(host)
@@ -79,6 +79,33 @@ module Proxy::Monitoring
         host = strip_domain(host)
 
         server.remove_downtime_host(host, author, comment)
+      end
+    end
+
+    # Zabbix streaming protocol
+    post '/history' do
+      case request.content_type
+      when 'application/x-ndjson'
+        request.body.rewind
+        request.body.readlines.each do |line|
+          item = JSON.parse(line)
+          server.history(item)
+        end
+      else
+        halt 406
+      end
+    end
+
+    post '/events' do
+      case request.content_type
+      when 'application/x-ndjson'
+        request.body.rewind
+        request.body.readlines.each do |line|
+          item = JSON.parse(line)
+          server.event(item)
+        end
+      else
+        halt 406
       end
     end
 
