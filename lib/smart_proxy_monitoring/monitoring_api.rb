@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'smart_proxy_monitoring_common/errors'
 require 'smart_proxy_monitoring/monitoring_plugin'
 require 'json'
 

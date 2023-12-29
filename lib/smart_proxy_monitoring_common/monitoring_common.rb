@@ -1,8 +1,4 @@
 module Proxy::Monitoring
-  class Error < RuntimeError; end
-  class NotFound < RuntimeError; end
-  class AuthenticationError < RuntimeError; end
-
   class Provider
     def query_host(host)
       raise NotImplementedError

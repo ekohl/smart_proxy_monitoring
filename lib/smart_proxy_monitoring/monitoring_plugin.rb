@@ -1,10 +1,6 @@
 require 'smart_proxy_monitoring/version'
 
 module Proxy::Monitoring
-  class NotFound < RuntimeError; end
-  class ConnectionError < RuntimeError; end
-  class Error < RuntimeError; end
-
   class Plugin < ::Proxy::Plugin
     plugin 'monitoring', Proxy::Monitoring::VERSION
 
