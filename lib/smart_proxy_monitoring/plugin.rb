@@ -10,11 +10,11 @@ module Proxy::Monitoring
     expose_setting :collect_status
     expose_setting :strip_domain
 
-    rackup_path File.expand_path('monitoring_http_config.ru', __dir__)
+    rackup_path File.expand_path('http_config.ru', __dir__)
 
     load_classes do
       require 'smart_proxy_monitoring/dependency_injection'
-      require 'smart_proxy_monitoring/monitoring_api'
+      require 'smart_proxy_monitoring/api'
     end
   end
 end

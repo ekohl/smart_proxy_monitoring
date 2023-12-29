@@ -1,4 +1,4 @@
-require 'smart_proxy_monitoring/monitoring_api'
+require 'smart_proxy_monitoring/api'
 
 map '/monitoring' do
   run Proxy::Monitoring::Api

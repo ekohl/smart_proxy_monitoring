@@ -2,7 +2,7 @@ require 'test_helper'
 require 'smart_proxy_monitoring'
 require 'smart_proxy_monitoring_common/errors'
 require 'smart_proxy_monitoring/dependency_injection'
-require 'smart_proxy_monitoring/monitoring_api'
+require 'smart_proxy_monitoring/api'
 
 ENV['RACK_ENV'] = 'test'
 
