@@ -1,4 +1,3 @@
-require 'smart_proxy_monitoring/version'
 require 'smart_proxy_monitoring/monitoring_plugin'
 require 'smart_proxy_monitoring_icinga2'
 require 'smart_proxy_monitoring_icingadirector'
