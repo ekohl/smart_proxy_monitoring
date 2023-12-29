@@ -5,7 +5,6 @@ module ::Proxy::Monitoring::Icinga2
       require 'smart_proxy_monitoring_icinga2/monitoring_icinga2_main'
       require 'smart_proxy_monitoring_icinga2/monitoring_icinga2_common'
       require 'smart_proxy_monitoring_icinga2/tasks_common'
-      require 'smart_proxy_monitoring_icinga2/icinga2_upload_queue'
       require 'smart_proxy_monitoring_icinga2/icinga2_client'
       require 'smart_proxy_monitoring_icinga2/icinga2_initial_importer'
       require 'smart_proxy_monitoring_icinga2/icinga2_api_observer'
@@ -14,7 +13,7 @@ module ::Proxy::Monitoring::Icinga2
 
     def load_dependency_injection_wirings(container_instance, settings)
       container_instance.dependency :monitoring_provider, lambda { ::Proxy::Monitoring::Icinga2::Provider.new }
-      container_instance.singleton_dependency :icinga2_upload_queue, lambda { ::Proxy::Monitoring::Icinga2::Icinga2UploadQueue.new }
+      container_instance.singleton_dependency :icinga2_upload_queue, lambda { Queue.new }
       container_instance.singleton_dependency :icinga2_api_observer, (lambda do
         ::Proxy::Monitoring::Icinga2::Icinga2ApiObserver.new(container_instance.get_dependency(:icinga2_upload_queue))
       end)

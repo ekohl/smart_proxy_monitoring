@@ -10,7 +10,7 @@ module ::Proxy::Monitoring::Icinga2
     attr_reader :semaphore
 
     def initialize(queue)
-      @queue = queue.queue
+      @queue = queue
       @semaphore = Mutex.new
     end
 

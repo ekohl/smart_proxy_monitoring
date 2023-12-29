@@ -7,7 +7,7 @@ module ::Proxy::Monitoring::Icinga2
     include TasksCommon
 
     def initialize(queue)
-      @queue = queue.queue
+      @queue = queue
     end
 
     def monitor
