@@ -1,2 +1,1 @@
-require 'smart_proxy_monitoring_icingadirector/plugin_configuration'
 require 'smart_proxy_monitoring_icingadirector/monitoring_icingadirector_plugin'

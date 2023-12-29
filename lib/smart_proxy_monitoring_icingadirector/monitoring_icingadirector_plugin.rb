@@ -10,7 +10,13 @@ module ::Proxy::Monitoring::IcingaDirector
     requires :monitoring, ::Proxy::Monitoring::VERSION
     requires :monitoring_icinga2, ::Proxy::Monitoring::VERSION
 
-    load_classes ::Proxy::Monitoring::IcingaDirector::PluginConfiguration
-    load_dependency_injection_wirings ::Proxy::Monitoring::IcingaDirector::PluginConfiguration
+    load_classes do
+      require 'smart_proxy_monitoring_common/monitoring_common'
+      require 'smart_proxy_monitoring_icingadirector/monitoring_icingadirector_main'
+    end
+
+    load_dependency_injection_wirings do |container_instance, _settings|
+      container_instance.dependency :monitoring_provider, lambda { ::Proxy::Monitoring::IcingaDirector::Provider.new }
+    end
   end
 end

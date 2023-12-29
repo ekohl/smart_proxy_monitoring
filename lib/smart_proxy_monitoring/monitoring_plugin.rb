@@ -16,6 +16,9 @@ module Proxy::Monitoring
 
     rackup_path File.expand_path('monitoring_http_config.ru', __dir__)
 
-    load_classes ::Proxy::Monitoring::ConfigurationLoader
+    load_classes do
+      require 'smart_proxy_monitoring/dependency_injection'
+      require 'smart_proxy_monitoring/monitoring_api'
+    end
   end
 end
